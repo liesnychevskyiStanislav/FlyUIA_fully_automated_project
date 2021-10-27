@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com</groupId>
+    <artifactId>FlyUIA_fully_automated_project</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <!-- PROPERTIES =============================================================================================== -->
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+
+        <selenium.version>4.0.0</selenium.version>
+        <testng.version>7.4.0</testng.version>
+        <loger.version>1.2.17</loger.version>
+        <apache_poi.version>3.17</apache_poi.version>
+        <apache_poi_oxml.version>3.17</apache_poi_oxml.version>
+        <extentreport.version>3.1.2</extentreport.version>
+        <maven_compiler_plugin.version>3.8.1</maven_compiler_plugin.version>
+        <mysql-connector-java.version>8.0.17</mysql-connector-java.version>
+        <webdrivermanager.version>3.6.1</webdrivermanager.version>
+        <selenium-server.version>4.0.0</selenium-server.version>
+        <maven_surefire_plugin.version>3.0.0-M3</maven_surefire_plugin.version>
+    </properties>
+    <!-- PROPERTIES =============================================================================================== -->
+
+    <!-- DEPENDENCIES ============================================================================================= -->
+    <dependencies>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${loger.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>${apache_poi.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${apache_poi_oxml.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>${extentreport.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector-java.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdrivermanager.version}</version>
+        </dependency>
+
+    </dependencies>
+    <!-- DEPENDENCIES ============================================================================================= -->
+
+</project>
