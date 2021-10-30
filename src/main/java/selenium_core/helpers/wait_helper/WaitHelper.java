@@ -11,7 +11,7 @@ import selenium_core.helpers.logger_helper.LoggerHelper;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
-public class WaitHelper
+public class WaitHelper // This class will help us with all kind of waiting of elements or simple wait.
 {
     //----------------------------------------------------------------------------------------------------------------||
     private WebDriver driver;
@@ -32,13 +32,14 @@ public class WaitHelper
      * @param timeout
      * @param unit
      */
-    public void setImplicitWait(long timeout, TimeUnit unit) // wait until set time over
+    public void setImplicitWait(long timeout, TimeUnit unit) // wait until set time will over
     {
         log.info("SetImplicitWait method is started and has been set to: " + timeout + " seconds");
         driver.manage().timeouts().implicitlyWait(timeout, unit);
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // new version selenium 4
-    public void setImplicitWaitSelenium4(Duration duration) // wait until set time over
+    public void setImplicitWait_Selenium_4(Duration duration) // wait until set time over
     {
         log.info("SetImplicitWait method is started and has been set to: " + duration + " seconds");
         driver.manage().timeouts().implicitlyWait(duration);
@@ -62,8 +63,9 @@ public class WaitHelper
         wait.ignoring(NoSuchFrameException.class);
         return wait;
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // new version selenium 4
-    private WebDriverWait getWaitSelenium4(int timeOutInSeconds, int pollingEveryInMilliseconds )
+    private WebDriverWait getWait_Selenium_4(Duration timeOutInSeconds, int pollingEveryInMilliseconds )
     {
         log.info("GetWait method is started and has been set to: " + timeOutInSeconds + " seconds");
         WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
@@ -75,7 +77,7 @@ public class WaitHelper
         return wait;
     }
     //----------------------------------------------------------------------------------------------------------------||
-    /**   log.info("");
+    /**
      * This method will make sure element is visible
      * @param element
      * @param timeOutInSeconds
@@ -109,6 +111,15 @@ public class WaitHelper
         wait.until(ExpectedConditions.elementToBeClickable(element));
         log.info("Element " + element.toString() + " is clickable now");
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // new version selenium 4
+    public void waitForElementClickable_Selenium_4(WebElement element, Duration timeOutInSeconds)
+    {
+        log.info("WaitForElementClickable method is started and waiting for : " + element.toString() + " element and set time for : " + timeOutInSeconds + " seconds");
+        WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+        log.info("Element " + element.toString() + " is clickable now");
+    }
     //----------------------------------------------------------------------------------------------------------------||
     /**
      * This method will make sure element invisibility of element
@@ -124,6 +135,16 @@ public class WaitHelper
         log.info("Element " + element.toString() + " is not present now");
         return status;
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // new version selenium 4
+    public boolean waitForElementNotPresent_Selenium_4(WebElement element, Duration timeOutInSeconds)
+    {
+        log.info("WaitForElementNotPresent is started and waiting for : " + element.toString() + " element and set time for : " + timeOutInSeconds + " seconds");
+        WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+        boolean status = wait.until(ExpectedConditions.invisibilityOf(element));
+        log.info("Element " + element.toString() + " is not present now");
+        return status;
+    }
     //----------------------------------------------------------------------------------------------------------------||
     /**
      * This method will for frameToBeAvailableAndSwitchToIt
@@ -131,6 +152,15 @@ public class WaitHelper
      * @param timeOutInSeconds
      */
     public void waitForFrameToBeAvailableAndSwitchToIt(WebElement element, long timeOutInSeconds)
+    {
+        log.info("WaitForFrameToBeAvailableAndSwitchToIt is started and waiting for frame: " + element.toString() + " frame and set time for : " + timeOutInSeconds + " seconds");
+        WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(element));
+        log.info("Frame " + element.toString() + " is available and switched now");
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // new version selenium 4
+    public void waitForFrameToBeAvailableAndSwitchToIt_Selenium_4(WebElement element, Duration timeOutInSeconds)
     {
         log.info("WaitForFrameToBeAvailableAndSwitchToIt is started and waiting for frame: " + element.toString() + " frame and set time for : " + timeOutInSeconds + " seconds");
         WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
@@ -180,8 +210,25 @@ public class WaitHelper
         driver.manage().timeouts().pageLoadTimeout(timeout, unit);
         log.info("Page is loaded by time: " + unit + " second");
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // new version selenium 4
+    public void pageLoadTime_Selenium_4(Duration timeout)
+    {
+        log.info("PageLoadTime is started and waiting for page to load for : " + timeout + " seconds");
+        driver.manage().timeouts().pageLoadTimeout(timeout);
+        log.info("Page is loaded by time: " + timeout + " second");
+    }
     //----------------------------------------------------------------------------------------------------------------||
     public void waitForElementWithTimeout(WebElement element, int timeOutInSeconds)
+    {
+        log.info("WaitForElementWithTimeout is started and waiting for: " + element.toString() + " element and set time for: " + timeOutInSeconds + " seconds");
+        WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+        wait.until(ExpectedConditions.visibilityOf(element));
+        log.info("Element " + element.toString() + " is visible now");
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // new version selenium 4
+    public void waitForElementWithTimeout_Selenium_4(WebElement element, Duration timeOutInSeconds)
     {
         log.info("WaitForElementWithTimeout is started and waiting for: " + element.toString() + " element and set time for: " + timeOutInSeconds + " seconds");
         WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
@@ -195,8 +242,24 @@ public class WaitHelper
         WebElement wait = new WebDriverWait(driver, timeOutInSeconds).ignoring(StaleElementReferenceException.class).until(ExpectedConditions.visibilityOf(element));
         log.info("Element " + element.toString() + " is visible now");
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // new version selenium 4
+    public void waitForElementIsPresentIgnoringException_Selenium_4(WebElement element, Duration timeOutInSeconds)
+    {
+        log.info("WaitForElementIsPresentIgnoringException is started and wait for: " + element.toString() + "element and set time for: " + timeOutInSeconds + " seconds");
+        WebElement wait = new WebDriverWait(driver, timeOutInSeconds).ignoring(StaleElementReferenceException.class).until(ExpectedConditions.visibilityOf(element));
+        log.info("Element " + element.toString() + " is visible now");
+    }
     //----------------------------------------------------------------------------------------------------------------||
     public void waitForElementToBeClickableIgnoringException(WebElement element, int timeOutInSeconds)
+    {
+        log.info("WaitForElementToBeClickableIgnoringException is started and  waiting for: " + element.toString() + " element and set time for: " + timeOutInSeconds + " seconds");
+        WebElement wait = new WebDriverWait(driver, timeOutInSeconds).ignoring(StaleElementReferenceException.class).until(ExpectedConditions.elementToBeClickable(element));
+        log.info("Element " + element + " is clickable now");
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // new version selenium 4
+    public void waitForElementToBeClickableIgnoringException_Selenium_4(WebElement element, Duration timeOutInSeconds)
     {
         log.info("WaitForElementToBeClickableIgnoringException is started and  waiting for: " + element.toString() + " element and set time for: " + timeOutInSeconds + " seconds");
         WebElement wait = new WebDriverWait(driver, timeOutInSeconds).ignoring(StaleElementReferenceException.class).until(ExpectedConditions.elementToBeClickable(element));
