@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="RegressionSuite">
+    <listeners>
+        <listener class-name="selenium_core.helpers.listener.RetryListener"></listener>
+    </listeners>
+
+
+
+    <test name="Test 1">
+        <classes>
+            <class name="test_scripts_cases.A"></class>
+        </classes>
+    </test>
+
+    <test name="Test 2">
+        <classes>
+            <class name="test_scripts_cases.B"></class>
+        </classes>
+    </test>
+
+    <test name="Test 3">
+        <classes>
+            <class name="test_scripts_cases.C"></class>
+        </classes>
+    </test>
+</suite>

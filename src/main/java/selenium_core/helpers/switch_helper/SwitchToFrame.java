@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import selenium_core.helpers.logger_helper.LoggerHelper;
 
-public class SwitchToFrame
+public class SwitchToFrame // This class will help us with frames to switch to.
 {
     //----------------------------------------------------------------------------------------------------------------||
     private WebDriver driver;
