@@ -10,7 +10,7 @@ public class Retry implements IRetryAnalyzer
     //----------------------------------------------------------------------------------------------------------------||
     private Logger log = LoggerHelper.getLogger(selenium_core.helpers.listener.Retry.class);
     private int retryCount = 0;
-    private int maxRetryCount = 3;
+    private int maxRetryCount = 3 ;
     //----------------------------------------------------------------------------------------------------------------||
     @Override
     public boolean retry(ITestResult result)

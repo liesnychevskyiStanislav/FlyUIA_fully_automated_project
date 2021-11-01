@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 
 public class A
 {
+    //@Test(retryAnalyzer = MyRetryExample.class)
     @Test
     public void testLogin()
     {

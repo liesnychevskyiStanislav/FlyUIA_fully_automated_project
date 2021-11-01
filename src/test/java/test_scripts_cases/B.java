@@ -5,9 +5,21 @@ import org.testng.annotations.Test;
 
 public class B
 {
+    int i = 1;
+
+    //@Test(retryAnalyzer = MyRetryExample.class)
     @Test
     public void testLogOut()
     {
-        Assert.assertTrue(false);
+        if(i == 3)
+        {
+            Assert.assertTrue(true);
+        }
+        else
+        {
+            i++;
+            Assert.assertTrue(false);
+        }
+
     }
 }

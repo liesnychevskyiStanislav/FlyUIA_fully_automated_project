@@ -7,7 +7,6 @@
     </listeners>
 
 
-
     <test name="Test 1">
         <classes>
             <class name="test_scripts_cases.A"></class>
