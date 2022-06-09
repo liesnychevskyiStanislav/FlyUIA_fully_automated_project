@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import selenium_core.helpers.logger_helper.LoggerHelper;
+import selenium_core.test_base.TestBase;
 
 public class VerificationHelper
 {
@@ -14,6 +15,7 @@ public class VerificationHelper
     public VerificationHelper(WebDriver driver)
     {
         log.info("VerificationHelper constructor is initialized..");
+        TestBase.logExtentReport("VerificationHelper constructor is initialized..");
         this.driver = driver;
     }
     //----------------------------------------------------------------------------------------------------------------||
@@ -23,11 +25,14 @@ public class VerificationHelper
         {
             element.isDisplayed();
             log.info("Element is present >>> " + element.getText());
+            TestBase.logExtentReport("Element is present >>> " + element.getText());
+
             return true;
         }
         catch (Exception e)
         {
             log.error("Error, element is not present >>> ", e.getCause());
+            TestBase.logExtentReport("Error, element is not present >>> "+ e.getMessage());
             return false;
         }
     }

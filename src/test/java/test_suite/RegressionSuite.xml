@@ -1,27 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="RegressionSuite">
+<suite name="Regression Suite">
     <listeners>
-        <listener class-name="selenium_core.helpers.listener.RetryListener"></listener>
+<!--        <listener class-name="selenium_core.helpers.listener.RetryListener"></listener>-->
+        <listener class-name="selenium_core.helpers.listener.ExtentListener"></listener>
+
     </listeners>
 
-
-    <test name="Test 1">
+    <test name="Search Fly">
         <classes>
-            <class name="test_scripts_cases.A"></class>
+            <class name="test_scripts_cases.real_tests.SearchFlightTest"></class>
         </classes>
     </test>
 
-    <test name="Test 2">
+    <test name="TestScreenshot">
         <classes>
-            <class name="test_scripts_cases.B"></class>
+            <class name="test_scripts_cases.testing_for.TestScreenshot"></class>
         </classes>
     </test>
 
-    <test name="Test 3">
+    <test name="A">
         <classes>
-            <class name="test_scripts_cases.C"></class>
+            <class name="test_scripts_cases.testing_for.A"></class>
+        </classes>
+    </test>
+
+    <test name="B">
+        <classes>
+            <class name="test_scripts_cases.testing_for.B"></class>
+        </classes>
+    </test>
+
+    <test name="C">
+        <classes>
+            <class name="test_scripts_cases.testing_for.C"></class>
         </classes>
     </test>
 </suite>

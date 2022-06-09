@@ -6,5 +6,6 @@ public enum BrowserType
     IExplorer,
     Chrome,
     Safari,
+    Edge,
     Zalenium_docker
 }

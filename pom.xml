@@ -9,10 +9,12 @@
     <version>0.0.1-SNAPSHOT</version>
     <!-- PROPERTIES =============================================================================================== -->
     <properties>
+       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
 
-        <selenium.version>4.0.0</selenium.version>
+<!--        <selenium.version>4.0.0</selenium.version>-->
+        <selenium.version>3.141.59</selenium.version>
         <testng.version>6.14.3</testng.version>
 <!--        <testng.version>7.4.0</testng.version>-->
         <loger.version>1.2.17</loger.version>
@@ -24,6 +26,8 @@
         <webdrivermanager.version>3.6.1</webdrivermanager.version>
         <selenium-server.version>4.0.0</selenium-server.version>
         <maven_surefire_plugin.version>3.0.0-M3</maven_surefire_plugin.version>
+        <suiteXmlFile>RegressionSuite.xml</suiteXmlFile>
+        <work_url>https://www.flyuia.com/il/en/home</work_url>
     </properties>
     <!-- PROPERTIES =============================================================================================== -->
 
@@ -83,7 +87,60 @@
             <version>${webdrivermanager.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>3.0.0-M5</version>
+        </dependency>
+
+
     </dependencies>
     <!-- DEPENDENCIES ============================================================================================= -->
+    <!-- BUILD section to run xml files from Maven ================================================================ -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1 </version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
+ <!-- Run time data ============================================================================================= -->
+                <configuration>
+                    <systemPropertyVariables>
+                        <url_xml>${work_url}</url_xml>
+                        <buildDirectory>${project.build.directory}</buildDirectory>
+                    </systemPropertyVariables>
+
+<!--                        <property>-->
+<!--                            <name>userName</name>-->
+<!--                            <value>${userName}</value>-->
+<!--                        </property>-->
+
+<!--                        <property>-->
+<!--                            <name>password</name>-->
+<!--                            <value>${password}</value>-->
+<!--                        </property>-->
+<!-- Run time data ============================================================================================= -->
+<!--                    <suiteXmlFiles>-->
+<!--                        <suiteXmlFile>src/test/java/test_suite/RegressionSuite.xml</suiteXmlFile>-->
+<!--                        <suiteXmlFile>src/test/java/test_suite/ReportingTesting.xml</suiteXmlFile>-->
+<!--                        <suiteXmlFile>src/test/java/test_suite/ScreenshotTest.xml</suiteXmlFile>-->
+<!--                    </suiteXmlFiles>-->
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <!-- BUILD section to run xml files from Maven ================================================================ -->
 </project>

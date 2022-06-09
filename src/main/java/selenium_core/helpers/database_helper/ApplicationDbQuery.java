@@ -44,7 +44,7 @@ public class ApplicationDbQuery //Help us to get the data from automation script
     public static void main(String[] args) throws SQLException
     {
         ApplicationDbQuery applicationDBQuery = new ApplicationDbQuery();
-        String name = applicationDBQuery.getOwnerName(2);
+        String name = applicationDBQuery.getOwnerName(3);
         System.out.println("The name is: " + name) ;
 
         List<Car> listOfData = applicationDBQuery.getCar();

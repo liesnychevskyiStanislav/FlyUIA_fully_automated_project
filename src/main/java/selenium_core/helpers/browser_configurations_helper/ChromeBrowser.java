@@ -15,19 +15,19 @@ public class ChromeBrowser
      */
     public ChromeOptions getChromeOptions()
     {
-        ChromeOptions option = new ChromeOptions();
-        option.addArguments("--test-type--");
-        option.addArguments("--disable-popup-blocking");
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--test-type--");
+        options.addArguments("--disable-popup-blocking");
 
-        //DesiredCapabilities chrome = DesiredCapabilities.chrome();
-        //chrome.setJavascriptEnabled(true);
-        //option.setCapability(ChromeOptions.CAPABILITY, chrome);
+        DesiredCapabilities chrome = DesiredCapabilities.chrome();
+        chrome.setJavascriptEnabled(true);
+        options.setCapability(ChromeOptions.CAPABILITY, chrome);
     //Linux
         if(System.getProperty("os.name").contains("Linux"))
         {
-            option.addArguments("--headless", "window-size=1024,768", "--no-sandbox");
+            options.addArguments("--headless", "window-size=1024,768", "--no-sandbox");
         }
-        return option;
+        return options;
     }
     //----------------------------------------------------------------------------------------------------------------||
     public WebDriver getChromeDriver(ChromeOptions cap)

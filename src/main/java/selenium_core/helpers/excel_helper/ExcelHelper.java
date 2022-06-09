@@ -24,19 +24,19 @@ public class ExcelHelper
         try
         {
             Object dataSets[][] = null;
-            FileInputStream file = new FileInputStream(new File(excelLocation));
+            FileInputStream file = new FileInputStream(new File(excelLocation)); //to read stream of data
             //Create workbook instance
             XSSFWorkbook workbook = new XSSFWorkbook(file);
+            //Get sheet from Workbook
             XSSFSheet sheet = workbook.getSheet(sheetName);
-            // Count active rows in the sheet
+            // Count number of active rows in the sheet
             int totalRow = sheet.getLastRowNum();
             System.out.println("Total row is: " + totalRow);
-            // Count active columns in the sheet
+            // Count number of active columns in the sheet
             int totalColumn = sheet.getRow(0).getLastCellNum();
             System.out.println("Total column is: " + totalColumn);
             //--------------------------------------------------------------------------------------------------------||
-            //dataSets = new Object[totalRow+1][totalColumn]; ////////////////////////////////////////////////////////////
-            dataSets = new Object[totalRow][totalColumn-1];
+            dataSets = new Object[totalRow+1][totalColumn]; //
             //--------------------------------------------------------------------------------------------------------||
             //Iterate through each Row one by one
             Iterator<Row> rowIterator = sheet.iterator();
@@ -101,7 +101,6 @@ public class ExcelHelper
             FileInputStream file = new FileInputStream(new File(excelLocation));
             //Create Workbook instance
             XSSFWorkbook workbook = new XSSFWorkbook(file);
-
             //Get sheet name from Workbook
             XSSFSheet sheet = workbook.getSheet(sheetName);
             //Count number of active rows in excel sheet
@@ -113,7 +112,7 @@ public class ExcelHelper
                 String cellData = row.getCell(0).getStringCellValue(); // we get data from the cell
                 if(cellData.contains(testCaseName))
                 {
-                    row.createCell(1).setCellValue(testStatus); // we create cell and write into the the cell data
+                    row.createCell(1).setCellValue(testStatus); // we create cell and write into the cell data
                     file.close();
                     log.info("Result updated..");
                     FileOutputStream out = new FileOutputStream(new File(excelLocation));
@@ -132,21 +131,21 @@ public class ExcelHelper
 //    public static void main(String[] args)
 //    {
 //        ExcelHelper excelHelper = new ExcelHelper();
-//        String excelLocation = ResourceHelper.getRecoursePath("/src/main/java/selenium_core/excel_sheets_data/selenium_test_data.xlsx");
-//        Object[][] data = excelHelper.getExcelData(excelLocation, "data");
+//        String excelLocation = ResourceHelper.getRecoursePath("/test_data_excel/DATA_FOR_TESTS.xlsx");
+//        Object[][] data = excelHelper.getExcelData(excelLocation, "Test Data EXCEL ");
 //        for(Object obj: data)
 //        {
 //            System.out.println(obj);
 //        }
 //    }
     //----------------------------------------------------------------------------------------------------------------||
-//    public static void main(String[] args)
-//    {
-//        selenium_core.helpers.excel.ExcelHelper excelHelper = new selenium_core.helpers.excel.ExcelHelper();
-//        String excelLocation = ResourceHelper.getRecoursePath("/src/main/java/selenium_core/excel_sheets_data/selenium_test_data.xlsx");
-//        excelHelper.updateResult(excelLocation, "TestControl", "Login", "PASS");
-//        excelHelper.updateResult(excelLocation, "TestControl", "Logout", "FAILED");
-//        excelHelper.updateResult(excelLocation, "TestControl", "Signin", "SKIP");
-//    }
+    public static void main(String[] args)
+    {
+        selenium_core.helpers.excel_helper.ExcelHelper excelHelper = new selenium_core.helpers.excel_helper.ExcelHelper();
+        String excelLocation = ResourceHelper.getRecoursePath("/test_data_excel/TestDataSheet.xlsx");
+        excelHelper.updateResult(excelLocation, "TestScripts", "Login", "PASS");
+        excelHelper.updateResult(excelLocation, "TestScripts", "Registration", "FAILED");
+        excelHelper.updateResult(excelLocation, "TestScripts", "Add to Card", "SKIP");
+    }
     //----------------------------------------------------------------------------------------------------------------||
 }

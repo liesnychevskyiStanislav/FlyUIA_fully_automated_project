@@ -12,7 +12,7 @@ public class FirefoxBrowser
     //----------------------------------------------------------------------------------------------------------------||
     public FirefoxOptions getFirefoxOptions()
     {
-        DesiredCapabilities firefox = DesiredCapabilities.firefox();
+        DesiredCapabilities firefox = DesiredCapabilities.firefox(); //DesiredCapabilities.firefox()
 
         FirefoxProfile profile = new FirefoxProfile();
         profile.setAcceptUntrustedCertificates(true);
@@ -39,7 +39,7 @@ public class FirefoxBrowser
 
         else if(System.getProperty("os.name").contains("Windows"))
         {
-            System.setProperty("webdriver.chrome.driver", ResourceHelper.getRecoursePath("/drivers/chromedriver.exe"));
+            System.setProperty("webdriver.gecko.driver", ResourceHelper.getRecoursePath("/drivers/geckodriver.exe"));
             return new FirefoxDriver(cap);
         }
 
